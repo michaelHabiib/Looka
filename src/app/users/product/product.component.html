@@ -1,0 +1,16 @@
+<app-landing></app-landing>
+<div class="main">
+    <div class="container">
+        <div class="row pt-5" *ngIf="!isLoading" >
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xsm-12 mb-4"  *ngFor = " let item of result ">
+                <app-imp-product [product] = "item"></app-imp-product>
+            </div>
+            <div class="col-lg-3 col-md-4 col-sm-6 col-xsm-12 mb-4"  *ngFor = " let item of localArray;index as i ">
+                <app-local-products [localArray] = "item"  [index] = 'i' ></app-local-products>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="spinner w-100 text-center"  *ngIf= "isLoading">
+    <app-spinner></app-spinner>
+</div>

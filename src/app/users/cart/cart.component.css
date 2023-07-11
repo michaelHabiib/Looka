@@ -1,0 +1,31 @@
+/* .table{
+    margin-top: 75px;
+} */
+.holder{
+    margin-top: 80px !important;
+    min-height: 80vh !important;
+}
+tr img.image{
+    width: 60px;
+}
+.form-control{
+    width: 100px !important;
+}
+.float{
+    margin-left: auto;
+}
+.amount{
+    width: 100px;
+}
+.amount2{
+    height: 100px;
+}
+th,td,tr{
+    color: var(--text-color);
+}
+tbody tr td,tbody th,caption{
+    color: var(--text-color);
+}
+.length{
+    color:rgb(223, 50, 50);
+}

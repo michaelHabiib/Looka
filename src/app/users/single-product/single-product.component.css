@@ -1,0 +1,69 @@
+.main{
+    background-color: var(--secondry-background-color);
+    height: 95vh;
+    margin-top: 70px !important;
+}
+.image-holder{
+    width: 100%;
+}
+.image-holder img{
+    width: 250px;
+    max-width: 250px;
+    /* height: 300px; */
+}
+.text{
+    width: 100%;
+}
+.stock{
+    color: #27c8a4;
+}
+.rate .fa-solid{
+    color: gold;
+}
+.dollar,
+.price{
+    color: #27c8a4;
+    text-align: center;
+}
+.btn{
+    background-color: #27c8a4;
+    color: white;
+    font-weight: bold;
+}
+.show{
+    display: none;
+    transition: 5ms;
+}
+.secondry-title{
+    cursor: pointer;
+}
+.bottomborder{
+    border-bottom: 3px solid #27c8a4;
+}
+.disc{
+    height: 150px;
+}
+@media (max-width:767px) {
+    .container{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .image-holder{
+        width: 50%;
+    }
+    .main{
+        height: auto;
+    }
+    .cart{
+        margin-top: 100px;
+        margin-bottom: 25px;
+    }
+}
+.form-control{
+    color: var(--text-color) !important;
+    background-color: var(--secondry-background-color);
+}
+.label{
+    color: var(--text-color);
+}

@@ -1,0 +1,160 @@
+<!----------------------------------------- Update modal  --------------------------------------->
+    <div class="modal fade" id="UpdateModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Update Your Product</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p class="d-block text-danger fw-bold fs-4" *ngIf="!UpdateproductForm.valid" >All Felids are Required</p>
+            <form class="form" [formGroup]="UpdateproductForm">
+                <label for="">Title:</label>
+                <input class="form-control" type="text" required formControlName="UpdateTitleForm">
+                <label for="">Price:</label>
+                <input   class="form-control" type="number" required placeholder="Your Product Price" formControlName="UpdatePriceForm">
+                <label  for="">Description:</label>
+                <textarea class="form-control d-block ps-2" required placeholder="Your Product Description" formControlName="UpdateDescrptionForm"></textarea>
+                <div class="d-flex justify-content-evenly">
+                    <input type="file" formControlName="UpdateImageForm" class="form-control w-70" (change)="GetImagePass2($event)" #fileInput> 
+                    <img src="{{base65}}" class="d-none fakeImage fakeImage2  me-5" >
+                </div>
+                <select class="form-control form-select col-lg-4 col-md-6 col-sm-12 mx-auto mb-2" required aria-label="Default select example" formControlName="UpdateCatrgoryForm">
+                    <option value= "electronics">electronics</option>
+                    <option value= "jewelery">jewelery</option>
+                    <option value= "men's clothing">men's clothing</option>
+                    <option value= "women's clothing">women's clothing</option>
+                </select>
+                <button [disabled]="!UpdateproductForm.valid" type="button" class="btn btn-primary" (click)="UpdateProduct()">Save changes</button>
+            </form>
+        </div>
+        </div>
+    </div>
+    </div>
+<!----------------------------------------- Update modal  --------------------------------------->
+
+
+<div class="table-responsive">
+    <h1 class="text-center fw-bold  fs-3">Admin Dashboared Page</h1>
+    <button *ngIf="OurProducts.length > 0" (click)="showmodal()" class="btn btn-success fw-bold my-2 ms-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Product</button>
+    <table class="table table-bordered table-striped mt-5 ">
+        <thead class="thead-dark">
+            <tr class="text-center fw-bold">
+                <th scope="col">Count</th>
+                <th scope="col">image</th>
+                <th scope="col">Title</th>
+                <th scope="col">Discrption</th>
+                <th scope="col">Price</th>
+                <th scope="col">Control</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr  class="text-center" *ngFor="let ourProduct of OurProducts;index as i " >
+                <td>{{i+1}}</td>
+                <td class="fw-bold" > <img class="fakeImage w-100" [src]="ourProduct.image" alt=""></td>
+                <td class="fw-bold" >{{ourProduct.title}}</td>
+                <td class="fw-bold disc" >{{ourProduct.description}}</td>
+                <td class="fw-bold">{{ourProduct.price}} LE</td>
+                <td class="buttons">
+                    <button class="fw-bold text-white btn btn-info me-2" data-bs-toggle="modal" data-bs-target="#UpdateModal" (click)="openUpdateProductModal(i+1,ourProduct)" >Update</button>
+                    <button class="fw-bold text-white btn btn-danger" (click)="DeleteProduct(ourProduct.title)">Delete</button>
+                </td>
+            </tr>
+            <tr *ngIf="OurProducts.length === 0">
+                <td colspan="7" class="text-center fw-bold">NO Products Yet</td>
+            </tr>
+            <tr *ngIf="OurProducts.length === 0">
+                <td colspan="7" class="text-center fw-bold">
+                    <button  class="btn btn-success fw-bold my-2 ms-5" data-bs-toggle="modal" data-bs-target="#exampleModal" >Add Product</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+<div class="spinner w-100 text-center" *ngIf= "isLoading">
+    <app-spinner></app-spinner>
+</div>
+
+<!-----------------------------------------Add New  modal --------------------------------------->
+<div  class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title fs-3" id="exampleModalLabel">Our Product Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <p class="d-block text-danger fw-bold fs-4" *ngIf="!productForm.valid" >All Felids are Required</p>
+            <form class="form d-flex flex-column" [formGroup]="productForm">
+                <div class="str d-flex">
+                    <mat-form-field  class="w-100 me-2" appearance="outline">
+                        <mat-label class="label fs-5"  >Title:</mat-label>
+                        <input formControlName="TitleForm" type="text" class="form-control m-0 p-0" matInput>
+                        <mat-error class="fs-6 fw-bold" *ngIf="productForm.controls.TitleForm.invalid">Your Product Title is Required</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="w-100 ms-2" appearance="outline">
+                        <mat-label class="label fs-5" >Price:</mat-label>
+                        <input max="100000" matInput type="number" formControlName="PriceForm" class="form-control m-0 p-0">
+                        <mat-error class="fs-6 fw-bold" *ngIf="productForm.controls.PriceForm.invalid">Your Product Price is Required and should be less Than 100 k</mat-error>
+                    </mat-form-field>
+                </div>
+                <mat-form-field appearance="outline">
+                    <mat-label class="label fs-5"  >Description</mat-label>
+                    <textarea matInput  formControlName="DescrptionForm"class="form-control m-0 p-0" ></textarea>
+                    <mat-error class="fs-6 fw-bold" *ngIf="productForm.controls.DescrptionForm.invalid">Your Product Description is Required</mat-error>
+                </mat-form-field>
+                    <div class="str d-flex justify-content-evenly">
+                        <input class="form-control w-70 me-4"  formControlName="ImageForm" (change)="GetImagePass($event)" #fileInput type="file">
+                        <img class="d-none fakeImage fakeImage2 me-5" src="{{base64}}">
+                        <mat-form-field class="sele w-50 form  me-4">
+                            <mat-label class="label fs-5">Select Your Category</mat-label>
+                            <mat-select formControlName="CatrgoryForm">
+                            <mat-option value="electronics">electronics</mat-option>
+                            <mat-option value="jewelery">jewelery</mat-option>
+                            <mat-option value="men's clothing">men's clothing</mat-option>
+                            <mat-option value="women's clothing">women's clothing</mat-option>
+                            </mat-select>
+                            <mat-error class="fs-6 fw-bold" *ngIf="productForm.controls.CatrgoryForm.invalid">Your Product Category is Required</mat-error>
+                        </mat-form-field>
+                    </div>
+                    <br/>
+                    <button [disabled]="!productForm.valid" class="btn btn-success fw-bold" data-dismiss="modal" (click)="GetProduct()" >Add Product</button> 
+            </form>
+        </div>
+    </div>
+</div>
+    <!----------------------------------------- Add New modal  --------------------------------------->
+<!-- <table mat-table [OurProducts] = "OurProducts" class="mat-elevation-z8"> -->
+<table mat-table class="mat-elevation-z8">
+
+  <!--- Note that these columns can be defined in any order.
+        The actual rendered columns are set as a property on the row definition" -->
+
+  <!-- Position Column -->
+  <ng-container matColumnDef="position">
+    <th mat-header-cell *matHeaderCellDef> No. </th>
+    <td mat-cell *matCellDef="let element"> {{element.position}} </td>
+  </ng-container>
+
+  <!-- Name Column -->
+  <ng-container matColumnDef="name">
+    <th mat-header-cell *matHeaderCellDef> Name </th>
+    <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+  </ng-container>
+
+  <!-- Weight Column -->
+  <ng-container matColumnDef="weight">
+    <th mat-header-cell *matHeaderCellDef> Weight </th>
+    <td mat-cell *matCellDef="let element"> {{element.weight}} </td>
+  </ng-container>
+
+  <!-- Symbol Column -->
+  <ng-container matColumnDef="symbol">
+    <th mat-header-cell *matHeaderCellDef> Symbol </th>
+    <td mat-cell *matCellDef="let element"> {{element.symbol}} </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+</table>
+

@@ -1,0 +1,46 @@
+<footer>
+    <div class="container">
+        <div class="row text-center">
+            <div class=" col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-2 text-center">
+                <h3 class="fw-bold ps-2">ABOUT</h3>
+                <p>looka is an E-commernce Website, You Can be The customer Or The Admin</p>
+                <ul >
+                    <li class="fw-bold" [routerLink]="['/dashboard']" (click)="switchAuth2()">Be The Admin</li>
+                    <li class="fw-bold" [routerLink]="['/products']" (click)="switchAuth()">Be The customer</li>
+                </ul>
+            </div>
+            <div class="info col-lg-3 col-md-6 col-sm-6 col-xs-12 my-1 text-center">
+                <h3 class="fw-bold ps-5">SUPPORT</h3>
+                <ul>
+                    <li class="fw-bold" [routerLink]="['/contact']" >Contact US</li>
+                    <li class="fw-bold">Terms of Use</li>
+                    <li class="fw-bold">Privacy Policy</li>
+                    <li class="fw-bold">Shipping & Dilvery</li>
+                    <li class="fw-bold">Returns & Exchange</li>
+                </ul>
+            </div>
+            <div class=" col-lg-3 col-md-6 col-sm-6 col-xs-12 text-center">
+                <h3 class="fw-bold ps-5">IMPORTANT LINKS</h3>
+                <ul class="">
+                    <li class="fw-bold" [routerLink]="['/about']" (click)="switchAuth2()">About Looka</li>
+                    <li class="fw-bold" [routerLink]="['/product']" (click)="switchAuth2()">Our Products</li>
+                    <li class="fw-bold" [routerLink]="['/cart']" (click)="switchAuth2()">View My Cart</li>
+                </ul>
+            </div>
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 mt-1 mb-2">
+                <h3 class="mb-1 d-block fw-bold ">Contact us</h3>
+                <div class="foot">
+                    <span class="phone d-block fs-6 pb-2"><i class="fa-solid fa-phone pe-2"></i> +20 1222353187</span>
+                    <span class="location d-block fs-6"><i class="fa-solid fa-location-dot"></i> 132 Toman Bai ST</span>
+                </div>
+                <div class="mika mt-5">
+                    <div class="icons">
+                        <a  class="mb-3"><span class="fw-bold">Facebook</span></a>
+                        <a  class="mb-3"><span class="fw-bold">Google+</span></a>
+                        <a  class="text-white"><span class="fw-bold">Github</span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>

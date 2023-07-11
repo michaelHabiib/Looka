@@ -1,0 +1,65 @@
+/* .main{
+    height: 100vh;
+} */
+.card{
+    height: 500px !important;  
+    position: relative;
+    background-color: var(--secondry-background-color);
+    box-shadow: var(--main-box-shadow);
+}
+input::placeholder{
+    font-weight: bold;
+}
+.card-image{
+    width: 150px;
+    height: 200px;
+}
+.main-btn,.lower{
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border: none;
+}
+.main-btn,.lower .btn{
+    background-color: #27c8a4;
+}
+.dollar,
+.price{
+    color: #27c8a4;
+    text-align: center;
+}
+.holder{
+    position: absolute;
+    bottom: 50px;
+    flex-direction: column;
+    left: 50%;
+    transform: translateX(-50%);
+}
+.rate i.fa-solid{
+    color: gold;
+}
+.disc{
+    color: #b9b9b9;
+}
+h2.main-title{
+    cursor: pointer;
+}
+.row .search{
+    width: 50%;
+}
+.form-select{
+    width: 380px;
+    height: 50px;
+    cursor: pointer;
+    box-shadow: var(--main-box-shadow);
+}
+.form-select option{
+    cursor: pointer;
+}
+.lower{
+    flex-direction: row;
+}
+option{
+    cursor: pointer;
+}

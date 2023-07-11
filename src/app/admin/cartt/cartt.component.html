@@ -1,0 +1,67 @@
+<div  class="modal fade modal-xl" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+    <div class="modal-content">
+        <div class="modal-header">
+        <h5 class="modal-title text-center fs-4" id="exampleModalLabel">Cart Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                    <tr class="text-center">
+                        <th scope="col">count</th>
+                        <th scope="col">title</th>
+                        <th scope="col">price</th>
+                        <th scope="col">amount</th>
+                        <th scope="col">total</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr *ngFor="let product of cart ;index as i" class="text-center" >
+                        <th scope="row">{{i+1}}</th>
+                        <td class="fw-bold fs-5" >{{product.title}}</td>
+                        <td class="fw-normal fs-5" >{{product.price}} LE</td>
+                        <td class="fw-normal fs-5" >{{amountArray[i]}}</td>
+                        <td class="fw-bold" >{{product.price * amountArray[i]}} LE</td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="modal-footer">
+        <button type="button" class="btn btn-secondary fw-bold" data-bs-dismiss="modal">Close</button>
+        </div>
+    </div>
+    </div>
+</div>
+<h1 class="main-heading text-center my-3 fw-bold"> Manage Clients Cart </h1>
+<div class="table-responsive">
+    <table class="table caption-top table-striped table-bordered "> 
+        <caption class=" fs-2 ">List of Carts</caption>
+        <thead>
+        <tr class="text-center">
+            <th scope="col">id</th>
+            <th scope="col">Total Products quantity</th>
+            <th scope="col">quantity</th>
+            <th scope="col">Total Price</th>
+            <th scope="col">Control</th>
+        </tr>
+        </thead>
+        <tbody>
+            <tr class="table-row" *ngFor="let cart of carts; index as i">
+                <th scope="row" class="text-center">{{cart.id}}</th>
+                <td class="text-center">{{cart.totalQuantity}}</td>
+                <td class="text-center">{{cart.totalProducts}}</td>
+                <td class="text-center fw-bold">{{cart.total}} LE</td>
+                <td class="control text-center">
+                    <button class="btn btn-primary me-2 fw-bold" (click)="ViewCart(cart.id)" data-bs-toggle="modal" data-bs-target="#exampleModal">View</button>
+                    <button class="btn btn-danger text-white fw-bold" (click)="DeleteCart(cart.id)">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>    
+<div class="spinner w-100 text-center"  *ngIf= "isLoading">
+    <app-spinner></app-spinner>
+</div>

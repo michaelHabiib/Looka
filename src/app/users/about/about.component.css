@@ -1,0 +1,72 @@
+main{
+    padding-top: 10px;
+}
+.main-title h2{
+    color: #27c8a4;
+    font-size: 50px;
+    padding-bottom: 18px;
+    width: fit-content;
+    border-bottom: 4px solid salmon;
+}
+.para{
+    line-height: 1.4;
+}
+.btn{
+    background-color: #27c8a4 !important;
+}
+@media (max-width:992px) {
+    header .image-holder img{
+        width:400px;
+        
+    }
+    header .left p {
+    font-size: 18px;
+    }
+}
+@media (max-width:767px) {
+    header{
+        flex-direction: column;
+        text-align: center;
+    }
+    header .image-holder img{
+        width:250px;
+        text-align: center;
+    }
+    header .btn{
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+ul li{
+    cursor: pointer;
+    width: fit-content;
+    padding-bottom: 8px;
+    padding-top: 8px;
+}
+ul li:not(:last-child){
+    border-bottom: 2px solid #27c8a4;
+}
+ul li::before {
+    content: "\2022";  /* Add content: \2022 is the CSS Code/unicode for a bullet */
+    color:  #27c8a4; /* Change the color */
+    font-weight: bold; /* If you want it to be bold */
+    display: inline-block; /* Needed to add space between the bullet and the text */
+    width: 2rem !important;
+    margin-left: -1em; /* Also needed for space (tweak if needed) */
+}
+@media (max-width:767px) {
+    .whoWe .right{
+        display: none;
+    }
+    .whoWe .left{
+        margin-top: 25px;
+    }
+}
+@media (max-width:992حء) {
+    .whoWe .right img{
+        width:400px;
+    }
+    .whoWe .left{
+        margin-top: 25px;
+    }
+}

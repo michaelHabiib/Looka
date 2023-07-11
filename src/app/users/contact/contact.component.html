@@ -1,0 +1,48 @@
+<main>
+    <div class="container mt-5 ">
+        <div class="cardes d-flex justify-content-center align-items-center">
+            <div class="card text-center ms-2">
+                <i class="fa-solid fa-location-dot fs-1 mt-2"></i>
+                <h2 class="fs-5 fw-bold py-2">MAIN OFFICE </h2>
+                <p class="py-2"> Toman Bai st, Cairo, Egypt</p>
+            </div>
+            <div class="card text-center mx-2">
+                <i class="fa-solid fa-phone fs-1 mt-2"></i>
+                <h2 class="fs-5 fw-bold py-2">Phone Number </h2>
+                <p class="py-2"> +20 1222353187</p>
+            </div>
+            <div class="card text-center mx-2">
+                <i class="fa-solid fa-envelope fs-1 mt-2"></i>
+                <h2 class="fs-5 fw-bold py-2">Email </h2>
+                <p class="py-2"> ramzymika@gmail.com</p>
+            </div>
+            <div class="card text-center ms-2 ">
+                <i class="fa-solid fa-fax fs-1 mt-2"></i>
+                <h2 class="fs-5 fw-bold py-2">FAX </h2>
+                <p class="py-2">1-234-567-8900</p>
+            </div>
+
+        </div>
+        <div class="box mx-auto mt-5 text-center">
+            <h3 class="text-white text-center fs-1" >Contact Us</h3>
+            <form [formGroup]="contactForm" (ngSubmit)="onSubmit(contactForm)"  >
+                <mat-form-field class="form-control "  appearance="outline">
+                    <mat-label class="text-white fs-5" >Enter Your Name</mat-label>
+                    <input class="mx-auto" matInput formControlName="NameForm"/>
+                    <mat-error class="fs-6 fw-bold" *ngIf="contactForm.controls.NameForm.invalid">{{getErrorMessageName()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-control"  appearance="outline">
+                    <mat-label class="text-white fs-5" >Enter Youe Email</mat-label>
+                    <input class="mx-auto" matInput formControlName="EmailForm" />
+                    <mat-error class="fs-6 fw-bold" *ngIf="contactForm.controls.EmailForm.invalid">{{getErrorMessageEmail()}}</mat-error>
+                </mat-form-field>
+                <mat-form-field class="form-control"  appearance="outline">
+                    <mat-label class="text-white fs-5">Enter Your Massage</mat-label>
+                    <textarea class="mx-auto" matInput formControlName="MassageForm"></textarea>
+                    <mat-error class="fs-6 fw-bold" *ngIf="contactForm.controls.MassageForm.invalid">{{getErrorMessageMassage()}}</mat-error>
+                </mat-form-field>
+                <button mat-button class="btn d-block mx-auto fw-bold text-white">SUBMIT</button>
+            </form>
+        </div>
+    </div>
+</main>

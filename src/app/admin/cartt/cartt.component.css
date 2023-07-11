@@ -1,0 +1,34 @@
+.main-heading {
+    padding-top: 80px;
+}
+.modal-content , .btn-close{
+    color: var(--text-color);
+    background-color: var(--main-background-color);
+}
+.table{
+    min-height: 100vh;
+}
+.imag{
+    width: 100px;
+}
+th,td,tr{
+    color: var(--text-color);
+}
+tbody tr td,tbody th,caption{
+    color: var(--text-color);
+}   
+@media (max-width:767px) {
+    .control{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 4px;
+    }
+    .control button{
+        width: 80px;
+        margin: 0 !important;
+        /* padding-bottom: 5px; */
+        margin-bottom: 5px !important;
+    }
+}

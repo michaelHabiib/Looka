@@ -1,0 +1,52 @@
+    <nav class="navbar fixed-top navbar-expand-lg px-3 ">
+        <div class="container">
+        <h1 class="main-title" [routerLink]= "['/product']" >Looka</h1>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="auth-cont pe-2">
+            <i class="fa fa-solid fa-gear fs-3" (click)="seetings()" ></i>
+            <li class="nav-item dropdown auth">
+                <a class="nav-link dropdown-toggle text-white p-2 fw-bold" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Select Your Authentication
+                </a>
+                <ul class="dropdown-menu">
+                <li><a class="dropdown-item " (click)="switchAuth2()" [routerLink]= "['/product']">USer</a></li>
+                <li><a class="dropdown-item" (click)="switchAuth()" [routerLink]= "['/dashboard']">Admin</a></li>
+                </ul>
+            </li>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ms-auto">
+            <li class="nav-item"  *ngIf="_GetProductsService.isUser ">
+                <a class="nav-link" aria-current="page" [routerLink]= "['/product']" routerLinkActive="active"  >Home</a>
+            </li>
+            <li class="nav-item" *ngIf="_GetProductsService.isUser ">
+                <a class="nav-link" [routerLink]= "['/about']" routerLinkActive="active"  >About US</a>
+            </li>
+            <li class="nav-item nav-length" *ngIf="!_GetProductsService.isUser ">
+                <a class="nav-link " [routerLink]= "['/adminCart']" routerLinkActive="active" >Users Carts</a>
+            </li>
+            <li class="nav-item nav-length" *ngIf="!_GetProductsService.isUser ">
+                <a class="nav-link " [routerLink]= "['/dashboard']" routerLinkActive="active" >Dashborad</a>
+            </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Switch Theme
+                </a>
+                <ul class="dropdown-menu">
+                <li (click)="switchThemeToLight()"><a class="dropdown-item"><i class="fa fa-solid fa-sun"></i> Light Mode</a></li>
+                <li (click)="switchThemeToDark()"><a class="dropdown-item"><i class="fa fa-solid fa-moon"></i> Dark Mode</a></li>
+                </ul>
+            </li>
+            <li class="nav-item" *ngIf="_GetProductsService.isUser ">
+                <a class="nav-link" [routerLink]= "['/contact']" routerLinkActive="active"  >Contact US</a>
+            </li>
+            </ul>
+        </div>
+        <li class="nav-item nav-length ps-2" *ngIf="_GetProductsService.isUser ">
+            <span *ngIf="totalCartLength > 0" class="length fw-bold" >{{totalCartLength}}</span>
+            <a class="nav-link" [routerLink]= "['/cart']"  routerLinkActive="active" ><i class="fa-solid fa-cart-shopping fs-5"></i></a>
+        </li>
+        </div>
+    </nav>

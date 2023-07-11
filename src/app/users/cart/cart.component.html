@@ -1,0 +1,58 @@
+<div class="holder">
+    <button  class="btn btn-warning fw-bold text-white d-block ms-auto me-5 mt-2" (click)="clearCart()" *ngIf="cartArray.length > 0 || localCart.length > 0 ">Clear Your Cart</button>
+    <div class="table-responsive">
+        <table class="table caption-top table-striped table-bordered "> 
+            <caption class=" fs-2 text-center fw-bold mb-2">Shopping Cart <span class="number fw-bold" *ngIf="cartArray.length > 0" >[ <span class="length">{{cartArray.length + localCart.length}}</span>  items]</span> </caption>
+            <thead>
+            <tr class="text-center">
+                <th scope="col">Count</th>
+                <th scope="col">image</th>
+                <th scope="col">Name</th>
+                <th scope="col">price</th>
+                <th scope="col">amount</th>
+                <th scope="col">total</th>
+                <th scope="col">controls</th>
+            </tr>
+            </thead>
+            <tbody>
+                <tr class="table-row" *ngFor= "let item of cartArray; index as i">
+                    <th scope="row" class="text-center">{{i+1}}</th>
+                    <img [src]="item.item.image" class="image">
+                    <td class="text-center">{{item.item.title}}</td>
+                    <td class="text-center">{{item.item.price}} LE</td>
+                    <td class="amount2 d-flex justify-content-center align-items-center">
+                        <button  class="btn btn-info text-white fw-bold me-2" (click)= "DecreaseAmount(i)" [ngClass]="item.amount <= 1 ? 'disabled' : ''">-</button>
+                        <span class="fs-5 fw-bold" >{{item.amount}}</span>    
+                        <button class="btn btn-info text-white fw-bold ms-2" (click)= "IncreaseAmount(i)" [ngClass]="item.amount === 10 ? 'disabled' : ''" >+</button>
+                    </td>
+                    <td class="text-center amount">{{(item.item.price * item.amount).toFixed(2)}} LE</td>
+                    <td><button class="btn btn-danger fw-bold text-center" (click)="deleteButton(i)">Delete</button></td>
+                </tr>
+                <tr class="table-row" *ngFor= "let item of localCart; index as i">
+                    <th scope="row" class="text-center">{{i+1}}</th>
+                    <img [src]="item.item.image" class="image">
+                    <td class="text-center">{{item.item.title}}</td>
+                    <td class="text-center">{{item.item.price}} LE</td>
+                    <td class="amount2 d-flex justify-content-center align-items-center">
+                        <button  class="btn btn-info text-white fw-bold me-2" (click)= "DecreaseAmount2(i)" [ngClass]="item.amount <= 1 ? 'disabled' : ''">-</button>
+                            <span class="fs-5 fw-bold" >{{item.amount}}</span>
+                        <button class="btn btn-info text-white fw-bold ms-2" (click)= "IncreaseAmount2(i)" [ngClass]="item.amount === 10 ? 'disabled' : ''">+</button>
+                    </td>
+                    <td class="text-center amount">{{(item.item.price * item.amount).toFixed(2)}} LE</td>
+                    <td><button class="btn btn-danger fw-bold text-center" (click)="deleteButton2(i)">Delete</button></td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr *ngIf="cartArray.length > 0 || localCart.length > 0 ">
+                    <td class=" fw-bold text-end" colspan="6">total = {{total.toFixed(2)}} LE</td>
+                    <td><button class="btn btn-success fw-bold"   (click)="SendData()" >Order Now</button></td>
+                </tr>
+                <tr *ngIf="cartArray.length === 0 && localCart.length === 0 ">
+                    <td colspan="7" class="text-center">Your Cart is Empaty</td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+    
+    

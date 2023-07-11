@@ -1,0 +1,109 @@
+.navbar{
+    box-shadow: var(--main-box-shadow);
+    background-color: var(--main-background-color);
+}
+.main-title{
+    position: relative;
+    margin:auto;
+    margin-left: 40px;
+}
+.main-title::before{
+    content: "";
+    position: absolute;
+    width: 28px;
+    height: 22px;
+    border: 10px solid var(--text-color);
+    border-top: none;
+    border-left: none;
+    border-bottom-right-radius: 10px;
+    top: 19%;
+    left: -28px;
+    background-color: transparent;
+    transform: rotate(-60deg);
+}
+.main-title::after{
+    content: "";
+    position: absolute;
+    width: 25px;
+    height: 21px;
+    border: 10px solid var(--text-color);
+    border-bottom: none;
+    border-right: none;
+    border-top-left-radius: 10px;
+    top: 23%;
+    left: -42px;
+    background-color: transparent;
+    transform: rotate(-60deg);
+}
+.navbar li,
+.navbar a{
+    color: var(--text-color);
+    /* background-color: var(--background-color); */
+}
+.dropdown-menu{
+    background-color: var(--secondry-background-color);
+}
+.nav-length{
+    position: relative;
+}
+.length{
+    position: absolute;
+    top: -5px;
+    right: -10px;
+    width:25px;
+    height: 25px;
+    text-align: center;
+    background-color: #27c8a4;
+    padding: 5px;
+    padding-bottom: 8px;
+    color: white;
+    border-radius: 50%;
+}
+@media (max-width:992px) {
+    .length{
+        top: -12px;
+        left: 30px;
+    }
+}
+@media (min-width:992px) {
+    .length{
+        top: -15px;
+        right: -21px;
+    }
+}
+.auth-cont{
+    position: relative;
+}
+.fa-gear{
+    position: fixed;
+    top: 50%;
+    left: 5px;
+    transition: 1s;
+    cursor: pointer;
+}
+.fa-gearMove{
+    left: 250px;
+}
+.auth{
+    position: fixed;
+    top: 50%;
+    left: -250px;
+    transition: 1s;
+    background-color: #27c8a4;
+    border-radius: 5px;
+}
+.auth ul {
+    width: 115px;
+    max-width: 115px;
+}
+.authMove{
+    left: 20px;
+}
+.active{
+    border-bottom:2px solid #27c8a4;
+}
+.navbar .navbar-toggler-icon, .navbar-toggler {
+    color: var(--text-color) !important;
+    border-color: var(--text-color) !important;
+    background-color: white !important;
+}

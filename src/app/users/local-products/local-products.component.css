@@ -1,0 +1,59 @@
+.card{
+    background-color: var(--card-background);
+    box-shadow: var(--main-box-shadow);
+}
+.card-image{
+    width: 150px;
+    height: 150px;
+    cursor: pointer;
+}
+.text{
+    background-color: var(--secondry-background-color);
+}
+h2.main-title{
+    cursor: pointer;
+    margin-bottom: 5px !important;
+}
+.title-holder{
+    background-color: var(--card-background);
+    width: auto;
+    height: 20px;
+    border-radius: 5px;
+}
+.title-holder .btn{
+    border: none !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+.fa-minus ,.fa-plus{
+    background-color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    color: var(--icon-color);
+}
+.errorMassage{
+    font-size: 10px;
+}
+.lower{
+    background-color:#27c8a4;
+    width: 85%;
+    border-radius: 15px;
+    cursor: pointer;
+}
+.left-side{
+    border-right: 1px solid white;
+    
+}
+@media (max-width:992px) {
+    .lower span{
+        text-align: center !important;
+        padding-left: 5px !important;
+        margin-left: 5px !important;
+    }
+}
+.rate i.fa-solid{
+    color: gold;
+}
+.disc{
+    color: var(--text-color);
+}

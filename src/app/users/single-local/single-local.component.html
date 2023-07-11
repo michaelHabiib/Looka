@@ -1,0 +1,42 @@
+<div class="main pt-3 mt-5" *ngIf= "!isLoading">
+    <div class="container d-flex justify-content-center ">
+        <div class="image-holder d-flex align-items-center pe-1">
+            <img [src]="product.image" alt="" class="w-100">
+        </div>
+        <div class="text ps-1">
+            <div class="holder d-flex align-items-center ms-4">
+                <span class="rate text-center">
+                    <i class="fa-solid fa-star pe-2"></i>
+                    <i class="fa-solid fa-star pe-2"></i>
+                    <i class="fa-solid fa-star pe-2"></i>
+                    <i class="fa-regular fa-star pe-2"></i>
+                </span>
+                <span class="dollar fs-4 fw-bold ps-3">(3.1 Reviews)</span>
+            </div>
+            <h2 class="ms-4">{{product.title}}</h2>
+            <p class="ms-4 fs-3">Availability (In Stock)</p>
+            <span class="dollar fs-2 fw-bold ms-4">$<span class="price fs-2 fw-bold">{{product.price}}</span></span>
+            <ul class="d-flex justify-content-start align-items-center"> 
+                <li>
+                    <h4 class="secondry-title d-inline me-2 mb-3 fw-bold"  (click)= "ChangeDiscValue()" [ngClass]= "disc ? 'bottomborder' : ''">About</h4> <h4 class="secondry-title d-inline ms-2 mb-3 fw-bold pb-1" (click)= "ChangeDiscValue()" [ngClass]= "disc ? '' : 'bottomborder'">Category</h4>
+                    <p class="disc pt-2 fw-bold" [ngClass]= "disc ? '' : 'show '">{{product.description}}</p>
+                    <p class="disc pt-2 fw-bold" [ngClass]= "disc ? 'show ' : ''" >{{product.category}}</p>
+                </li>
+            </ul>
+            <div class="cart">
+                <form [formGroup]="profileForm" >
+                    <mat-form-field appearance="outline">
+                        <mat-label class="form-control2">Enter Your amount</mat-label>
+                        <input type="number" class="form-control2"  inputmode="numeric" pattern="\d*" formControlName="amount" matInput [(ngModel)]="amount" >
+                        <mat-error class="err fs-6 fw-bold" *ngIf="profileForm.controls.amount.invalid">{{getErrorMassage()}}</mat-error>
+                    </mat-form-field>
+                    <button class="btn ms-4" [disabled]="!profileForm.valid" (click)="addToCart(profileForm,product)" >ADD TO CART</button>
+                </form>
+                <!-- (click)="onSubmit(profileForm, product)"  -->
+            </div>
+        </div>
+    </div>
+</div>
+<div class="spinner w-100 text-center"  *ngIf= "isLoading">
+    <app-spinner></app-spinner>
+</div>

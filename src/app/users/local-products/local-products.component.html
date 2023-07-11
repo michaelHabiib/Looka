@@ -1,0 +1,39 @@
+<div class="card pt-2">
+    <img [src]="localArray.image" alt="" class="card-image mx-auto p-2 pb-3"  [routerLink]="['/SingleLocalComponent', index]">
+    <div class="text  pt-3">
+        <div class="title d-flex justify-content-between ps-2 pe-2 ">
+            <h2 class="main-title fs-5 fw-normal"  [routerLink]="['/SingleLocalComponent', index]">{{localArray.title.slice(0,11)}}</h2>
+        </div>
+        <div class="d-flex justify-content-between align-items-center px-2">
+            <div class="holder d-flex ">
+                <span class="rate text-center">
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-solid fa-star"></i>
+                    <i class="fa-regular fa-star"></i>
+                </span>
+            </div>
+            <div class="title-holder d-flex justify-content-between align-items-center mt-1 p-3">
+                <button [disabled]="amount === 1" class="btn" ><i class="fa-solid fa-minus p-1 me-1" (click)="DecreaseAmount()"  ></i></button>
+                <span class="ps-1 pe-1 m-x2">{{amount}}</span>
+                <i class="fa-solid fa-plus p-1 ms-1" (click)="increaseAmount();"></i>
+            </div>
+        </div>
+        <mat-error class="errorMassage fw-bold ps-2"  *ngIf="amount === 10">{{increaseAmount()}}</mat-error>
+        <p class="disc ps-2">{{localArray.description.slice(0,70)}}....</p>
+        <div class="lower d-flex justify-content-between align-items-center mx-auto my-3 p-3" *ngIf="cartView" >
+            <div class="left-side d-flex align-items-center pe-2">
+                <i class="fa-solid fa-plus p-1 ms-1 me-2" (click)="addToCart(amount,localArray); cartView = false" ></i>
+                <span class="text-white"> Add to Cart</span>
+            </div>
+            <span class="price text-white ps-2">${{localArray.price}}</span>
+        </div>
+        <div class="lower d-flex justify-content-center mx-auto my-3 p-3 text-white" *ngIf="!cartView" [routerLink]="['/cart']" >
+            view My Cart
+        </div>
+</div>
+
+
+
+
+
